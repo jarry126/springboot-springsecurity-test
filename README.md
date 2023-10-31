@@ -1,0 +1,2 @@
+# springboot-springsecurity-test
+基于springboot的springsecurity权限校验、授权系统
