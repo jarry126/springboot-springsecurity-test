@@ -35,11 +35,30 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
+        <!-- oauth2-authorization-server -->   <!--官网最新版本推荐使用java17，我的是java8-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-authorization-server</artifactId>
+            <version>0.2.3</version>
+        </dependency>
+
+        <!-- security-cas -->  <!--todo 单点登录需要用到的地方；我感觉可以使用redis来替代，之后看-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-cas</artifactId>
+        </dependency>
+
         <!--jwt依赖-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
             <version>0.9.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.83</version>
         </dependency>
 
     </dependencies>

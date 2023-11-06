@@ -27,7 +27,6 @@ public class LoginOutController {
         // 从redis中删除信息
         // 使用用户id将redis中的相关数据删除掉
 
-
         return "登出成功";
     }
 

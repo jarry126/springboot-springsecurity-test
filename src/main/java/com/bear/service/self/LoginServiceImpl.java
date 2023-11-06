@@ -30,6 +30,9 @@ public class LoginServiceImpl  {
         LoginUser loginUser = (LoginUser) authenticate.getPrincipal();
         String userId = loginUser.getUser().getId().toString();
         String jwt = JwtUtil.createJWT(userId);
+
+        // todo 用户信息和用户权限放入redis中
+
         //authenticate存入redis
 //        redisCache.setCacheObject("login:"+userId,loginUser);
         //把token响应给前端
