@@ -4,8 +4,10 @@ import com.bear.filter.JwtAuthenticationTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -49,6 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    // todo 自定义一个登录页面
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -85,5 +88,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
+    }
+
+    // todo 从公司学习到的代码
+    // todo 这段相当于白名单，ignoring，设置哪些不需要经过springSecurity 认证
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring()
+                .antMatchers(
+                        HttpMethod.POST,
+                        "/login",
+                        "/api/article/*",
+                        "/api/upload/*"
+                )
+
+                // 静态资源放开过滤
+                .and()
+                .ignoring()
+                .antMatchers(
+                        HttpMethod.GET,
+                        "/assets/**",
+                        "/favicon.ico",
+                        "/activiti-editor/**",
+                        "/api/article/*",
+                        "/api/upload/*"
+                );
+
     }
 }

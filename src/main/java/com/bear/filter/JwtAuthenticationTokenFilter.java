@@ -51,6 +51,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             throw new RuntimeException("token非法");
         }
 
+
         // todo 用户信息和权限从redis中获取，用户信息放入loginUser，再将权限放入authenticationToken中的authorities
 
 
