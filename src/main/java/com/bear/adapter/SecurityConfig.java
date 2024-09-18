@@ -51,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    // todo 自定义一个登录页面
+    // 自定义一个登录页面, 网上有教程
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
